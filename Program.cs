@@ -47,6 +47,7 @@ double Distance(double x1, double y1, double x2, double y2)
 {
     return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2)); 
 }
+
 //Метод выводящий сумму чисел от одного до N.
 
 int GetSumOfNumbers(int number)
@@ -94,6 +95,69 @@ bool CheckTriangle(int a, int b, int c)
     if (a > b + c || b > a + c || c > a + b) return false;
     //if(a < b + c && b < a + c && c < a + b) return true;
     else return true;
+}
+
+//Метод поиска длины числа
+
+int FindNumberLength(int input)
+{
+    int numLength = 0;
+
+    while (input > 0)
+    {
+        input = input / 10;
+        numLength++;
+    }
+    return numLength;
+}
+
+//Метод разворота числа длины Length (пример: если length = 5493, то multiplier = 1000)
+
+int ReverseNumber(int multiplier, int num, int length)
+{
+    int newNum = 0;
+    for (int i = 0; i < length; i++)
+    {
+        newNum = newNum + num % 10 * multiplier;
+        num = num / 10;
+        multiplier = multiplier / 10;
+    }
+    return newNum;
+}
+
+//Метод проверки является ли число палиндромом
+
+bool CompareNumbers(int input, int divider, int length)
+{
+    int firstNum;
+    int lastNum;
+    int newNum = input;
+
+    for (int i = 0; i < length / 2; i++)
+    {
+        firstNum = newNum / divider;
+        lastNum = newNum % 10;
+
+        if (firstNum == lastNum)
+        {
+            newNum = newNum % divider / 10;
+            divider /= 100;
+        }
+        else return false;
+    }
+    return true;
+}
+
+//Метод возводящий число в степень(power)
+
+int MathPowInt(int num, int power)
+{
+    int multiplier = num;
+    for (int i = 1; i < power; i++)
+    {
+        num = num * multiplier;
+    }
+    return num;
 }
 
 */
