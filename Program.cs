@@ -374,7 +374,7 @@ void Print2DArray(int[,] array)
 
 //Метод создающий двумерный массив
 
-int[,] CreateRandomArray(int minValue, int maxValue, int rows, int columns)
+int[,] CreateRandom2DArray(int minValue, int maxValue, int rows, int columns)
 {
     int[,] array = new int[rows, columns];
 
@@ -386,6 +386,61 @@ int[,] CreateRandomArray(int minValue, int maxValue, int rows, int columns)
         }
     }
     return array;
+}
+
+//Метод возводящий значение в квадрат
+
+void PowerEvenElements(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i += 2)
+        for (int j = 0; j < array.GetLength(1); j += 2)
+            array[i, j] *= array[i, j];
+}
+
+//Метод шагающий по главной диагонали (с индексами (0,0); (1;1) и т.д.
+
+int SumOfDiagonalValues(int[,] array)
+{
+    if (array.GetLength(0) == array.GetLength(1))
+    {
+        int sum = 0;
+
+        for (int i = 0; i < array.GetLength(0); i++)
+            sum += array[i, i];
+        return sum;
+    }
+    return 0;
+}
+
+//Метод заполняющий массив случайными вещественными числами.
+
+double[,] Create2DRandomArray(int[] arr)
+{
+    double[,] array = new double[arr[row], arr[column]];
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = Math.Round(new Random().Next(arr[minValue], arr[maxValue]) + new Random().NextDouble(), 2);
+    return array;
+}
+
+//Метод проверяющий существование индкеса в массиве(булевый)
+
+bool Check2DArray(int[,] arr, int row, int col) => row <= arr.GetLength(0) && col <= arr.GetLength(1);
+
+//Метод поиска средего арифметического в каждой строке(с выводом нового массива)
+
+double[] FindAverageInRows(int[,] array)
+{
+    double[] newArray = new double[array.GetLength(0)];
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        double sum = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
+            sum = sum + array[i, j];
+        newArray[i] = sum / array.GetLength(1);
+    }
+    return newArray;
 }
 
 */
